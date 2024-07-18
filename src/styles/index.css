@@ -1,0 +1,24 @@
+:root {
+  --cor-texto: #262626;
+  --cor-header: #000137;
+  --cor-principal: #ffa500;
+  --cor-detalhes: #8284FA;
+  --cor-tarefas: #4EA8DE;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(../assets/background.gif);
+  color: var(--cor-texto);
+  min-width: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
