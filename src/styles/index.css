@@ -19,6 +19,7 @@
 
 body {
   background-image: url(../assets/background.gif);
+  background-size: cover;
   color: var(--cor-texto);
   min-width: 100vh;
   font-family: "Inter", sans-serif;

@@ -6,14 +6,20 @@ import { useState } from 'react';
 export function Header({ onAddTask }){
     const [title, setTitle] = useState('');
     const [conclusionDate, setConclusionDate] = useState(null);
+    const today = new Date().toISOString().split('T')[0];
     
-    function handleSubmit(event) {
-        
-        onAddTask()
+    function handleSubmit(e) {
+        e.preventDefault();
+        onAddTask(title, conclusionDate);
+        setTitle('');
     }
 
     function onChangeTitle(event) {
         setTitle(event.target.value)
+    }
+
+    function onChangeDate(event) {
+        setConclusionDate(event.target.value)
     }
     
     return (
@@ -22,7 +28,8 @@ export function Header({ onAddTask }){
 
             <form onSubmit={handleSubmit} className={styles.newTaskForm}>
                 <div className={styles.newTaskInput}>
-                    <input placeholder="Adicionar nova tarefa" type="text" onChange={onChangeTitle} />
+                    <input className={styles.inputTitle} placeholder="Adicionar nova tarefa" type="text" onChange={onChangeTitle} required/>
+                    <input className={styles.inputDate} type="date" min={today} onChange={onChangeDate} required/>
                 </div>
                 <button>Criar 
                     <AiOutlinePlusCircle 

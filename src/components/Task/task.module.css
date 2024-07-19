@@ -17,6 +17,11 @@
   margin-right: auto;
 }
 
+.task p:nth-of-type(2) {
+  font-size: 12px;
+  line-height: 16px;
+}
+
 p.textCompleted {
   color: #808080;
   text-decoration: line-through;
@@ -52,4 +57,22 @@ p.textCompleted {
   background: none;
   border: none;
   color: #808080;
+}
+
+.infoTask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.lateDate {
+  color: #ff0000;
+  font-size: larger;
 }
