@@ -4,6 +4,7 @@
   --cor-principal: #ffa500;
   --cor-detalhes: #8284FA;
   --cor-tarefas: #4EA8DE;
+  --task-background: #F2F2F2;
 }
 
 * {
@@ -11,6 +12,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+*:focus {
+  outline-color: #ffa500;
+} 
 
 body {
   background-image: url(../assets/background.gif);
