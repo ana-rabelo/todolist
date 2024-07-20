@@ -2,7 +2,6 @@ import styles from './task.module.css';
 import { TbTrash } from 'react-icons/tb';
 import { AiOutlineEdit } from "react-icons/ai";
 import { FaRegCalendar } from "react-icons/fa";
-import { BsFillCheckCircleFill } from 'react-icons/bs';
 
 export function Task ({ task, onComplete, onDelete }) {
 
@@ -27,7 +26,7 @@ export function Task ({ task, onComplete, onDelete }) {
         <div className={styles.task}>
             <div className={styles.text}>
                 <button className={styles.checkContainer} onClick={() => onComplete(task.id)}>
-                    { task.isCompleted ? <BsFillCheckCircleFill /> : <div />}
+                    { task.isCompleted ? <lord-icon src="https://cdn.lordicon.com/lomfljuq.json" trigger="in" colors="primary:#5e60ce"></lord-icon> : <div />}
                 </button>
 
                 <div className={styles.infoTask}>
