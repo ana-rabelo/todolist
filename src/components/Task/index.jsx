@@ -5,20 +5,23 @@ import { FaRegCalendar } from "react-icons/fa";
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 
 export function Task ({ task, onComplete, onDelete }) {
-    
-    function isTaskLate(conclusionDate) {
-        const today = new Date();
-        today.setDate(today.getDate() + 1);
-        today.setHours(0, 0, 0, 0);
-        
-        const taskDate = new Date(conclusionDate);
-        taskDate.setHours(0, 0, 0, 0);
-        
-        console.log(taskDate)
-        console.log("today" + today)
-        console.log(today >= taskDate)
-        return today >= taskDate;
-      }
+
+    function handleDelete() {
+        if (window.confirm(`"${task.title}" será excluída definitivamente. Deseja continuar?`)) {
+            onDelete(task.id);
+        }
+    }
+
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Janeiro é 0!
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
+    const today = new Date() .toISOString().split('T')[0];
+    const isLate = task.conclusionDate < today;
 
     return (
         <div className={styles.task}>
@@ -28,8 +31,12 @@ export function Task ({ task, onComplete, onDelete }) {
                 </button>
 
                 <div className={styles.infoTask}>
-                    <p className={task.isCompleted ? styles.textCompleted : ""}>{task.title}</p>
-                    <p className={task.isCompleted ? styles.textCompleted : isTaskLate(task.conclusionDate) ? styles.lateDate : ""}><FaRegCalendar /> {task.conclusionDate}</p>
+                    <p className={task.isCompleted ? styles.textCompleted : ""}>
+                        {task.title}
+                    </p>
+                    <p className={`${task.isCompleted ? styles.textCompleted : ""} ${isLate ? styles.lateDate : ""}`}>
+                        <FaRegCalendar /> {formatDate(task.conclusionDate)}
+                    </p>
                 </div>
             </div>  
 
@@ -37,7 +44,7 @@ export function Task ({ task, onComplete, onDelete }) {
                 <button className={styles.editButton}>
                     <AiOutlineEdit size={22} />
                 </button>
-                <button className={styles.deleteButton} onClick={() => onDelete(task.id)}>
+                <button className={styles.deleteButton} onClick={handleDelete}>
                     <TbTrash size={20} />
                 </button>
             </div>

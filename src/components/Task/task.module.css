@@ -73,6 +73,10 @@ p.textCompleted {
 }
 
 .lateDate {
-  color: #ff0000;
-  font-size: larger;
+  color: #EA0000 !important;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
 }

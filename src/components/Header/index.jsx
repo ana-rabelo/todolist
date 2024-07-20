@@ -5,13 +5,15 @@ import { useState } from 'react';
 
 export function Header({ onAddTask }){
     const [title, setTitle] = useState('');
-    const [conclusionDate, setConclusionDate] = useState(null);
+    const [conclusionDate, setConclusionDate] = useState('');
     const today = new Date().toISOString().split('T')[0];
     
-    function handleSubmit(e) {
-        e.preventDefault();
+    function handleSubmit(event) {
+        event.preventDefault();
+
         onAddTask(title, conclusionDate);
         setTitle('');
+        setConclusionDate('');
     }
 
     function onChangeTitle(event) {
@@ -28,13 +30,26 @@ export function Header({ onAddTask }){
 
             <form onSubmit={handleSubmit} className={styles.newTaskForm}>
                 <div className={styles.newTaskInput}>
-                    <input className={styles.inputTitle} placeholder="Adicionar nova tarefa" type="text" onChange={onChangeTitle} required/>
-                    <input className={styles.inputDate} type="date" min={today} onChange={onChangeDate} required/>
+                    <input 
+                        className={styles.inputTitle} 
+                        placeholder="Adicionar nova tarefa" 
+                        type="text" 
+                        value={title}
+                        onChange={onChangeTitle} 
+                        required/>
+                    <input 
+                        className={styles.inputDate} 
+                        type="date" 
+                        min={today} 
+                        value={conclusionDate}
+                        onChange={onChangeDate} 
+                        required/>
                 </div>
                 <button>Criar 
                     <AiOutlinePlusCircle 
                     size={20} 
-                    color="#072D48" /></button>
+                    color="#072D48" />
+                </button>
             </form>
         </header>
     )
