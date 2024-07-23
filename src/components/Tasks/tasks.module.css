@@ -46,3 +46,25 @@
   flex-direction: column;
   gap: 12px;
 }
+
+.taskEnter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.taskEnterActive {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.taskExit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.taskExitActive {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms, transform 500ms;
+}

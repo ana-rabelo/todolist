@@ -3,7 +3,7 @@ import { TbTrash } from 'react-icons/tb';
 import { AiOutlineEdit } from "react-icons/ai";
 import { FaRegCalendar } from "react-icons/fa";
 
-export function Task ({ task, onComplete, onDelete }) {
+export function Task ({ task, onComplete, onDelete, onEdit }) {
 
     function handleDelete() {
         if (window.confirm(`"${task.title}" será excluída definitivamente. Deseja continuar?`)) {
@@ -11,9 +11,13 @@ export function Task ({ task, onComplete, onDelete }) {
         }
     }
 
+    function handleEdit() {
+        onEdit(task);
+    }
+
     function formatDate(dateString) {
         const date = new Date(dateString);
-        const day = String(date.getDate()).padStart(2, '0');
+        const day = String(date.getDate() + 1).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0'); // Janeiro é 0!
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
@@ -40,7 +44,7 @@ export function Task ({ task, onComplete, onDelete }) {
             </div>  
 
             <div className={styles.buttons}>
-                <button className={styles.editButton}>
+                <button className={styles.editButton} onClick={handleEdit}>
                     <AiOutlineEdit size={22} />
                 </button>
                 <button className={styles.deleteButton} onClick={handleDelete}>

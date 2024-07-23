@@ -1,7 +1,8 @@
 import styles from './tasks.module.css'
 import { Task } from '../Task'
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-export function Tasks({ tasks, onComplete, onDelete }) {
+export function Tasks({ tasks, onComplete, onDelete, onEdit }) {
   const tasksQtd = tasks.length;
   const completedTasks = tasks.filter(task => task.isCompleted).length;
 
@@ -19,11 +20,22 @@ export function Tasks({ tasks, onComplete, onDelete }) {
           </div>
         </header>
 
-        <div className={styles.list}>
-            {tasks.map(task => (
-              <Task key={task.id} task={task} onComplete={onComplete} onDelete={onDelete} />
-            ))}
-        </div>
+        <TransitionGroup className={styles.list}>
+        {tasks.map(task => (
+          <CSSTransition
+            key={task.id}
+            timeout={500}
+            classNames={{
+              enter: styles.taskEnter,
+              enterActive: styles.taskEnterActive,
+              exit: styles.taskExit,
+              exitActive: styles.taskExitActive,
+            }}
+          >
+            <Task task={task} onComplete={onComplete} onDelete={onDelete} onEdit={onEdit} />
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
       </section>
     )
 }
