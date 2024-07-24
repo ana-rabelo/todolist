@@ -21,8 +21,11 @@ body {
   background-image: url(../assets/background.gif);
   background-size: cover;
   color: var(--cor-texto);
-  min-width: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
   font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 button {

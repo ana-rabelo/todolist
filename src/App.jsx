@@ -1,5 +1,6 @@
 import { Header } from './components/Header';
-import { Tasks } from './components/Tasks'
+import { Tasks } from './components/Tasks';
+import { Footer } from './components/Footer';
 import { useEffect, useState } from 'react';
 
 const LOCAL_STORAGE_KEY = 'todo:tasks';
@@ -8,6 +9,10 @@ function App() {
 
   const [tasks, setTasks] = useState([]);
   const [taskToEdit, setTaskToEdit] = useState(null);
+
+  function sortTasks(tasks) {
+    tasks.sort((a, b) => a.isCompleted - b.isCompleted);
+  }
 
   function loadSavedTasks(){
     const savedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -22,6 +27,7 @@ function App() {
 
   function setTasksAndSave(newTasks){
     setTasks(newTasks);
+    sortTasks(newTasks);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
   }
 
@@ -61,8 +67,7 @@ function App() {
       return task;
     });
 
-    newTasks.sort((a, b) => a.isCompleted - b.isCompleted);
-
+    sortTasks(newTasks);
     setTasksAndSave(newTasks);
   }
 
@@ -79,6 +84,7 @@ function App() {
       onComplete={toogleTaskCompletedById}
       onEdit={handleEditTask}
     />
+    <Footer />
     </>
   )
 }

@@ -68,3 +68,18 @@
   transform: translateY(20px);
   transition: opacity 500ms, transform 500ms;
 }
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .tasks {
+    width: 100vw;
+    margin: initial;
+    margin-top: 90px;
+  }
+}

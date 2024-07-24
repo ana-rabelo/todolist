@@ -8,34 +8,34 @@ export function Tasks({ tasks, onComplete, onDelete, onEdit }) {
 
     return (
         <section className={styles.tasks}>
-        <header className={styles.header}>
-          <div>
-            <p>Tarefas criadas</p>
-            <span>{tasksQtd}</span>
-          </div>
-  
-          <div>
-            <p className={styles.textPurple}>Tarefas completas</p>
-            <span>{completedTasks} de {tasksQtd}</span>
-          </div>
-        </header>
+          <header className={styles.header}>
+            <div>
+              <p>Tarefas criadas</p>
+              <span>{tasksQtd}</span>
+            </div>
+    
+            <div>
+              <p className={styles.textPurple}>Tarefas completas</p>
+              <span>{completedTasks} de {tasksQtd}</span>
+            </div>
+          </header>
 
-        <TransitionGroup className={styles.list}>
-        {tasks.map(task => (
-          <CSSTransition
-            key={task.id}
-            timeout={500}
-            classNames={{
-              enter: styles.taskEnter,
-              enterActive: styles.taskEnterActive,
-              exit: styles.taskExit,
-              exitActive: styles.taskExitActive,
-            }}
-          >
-            <Task task={task} onComplete={onComplete} onDelete={onDelete} onEdit={onEdit} />
-          </CSSTransition>
-        ))}
-      </TransitionGroup>
+          <TransitionGroup className={styles.list}>
+          {tasks.map(task => (
+            <CSSTransition
+              key={task.id}
+              timeout={500}
+              classNames={{
+                enter: styles.taskEnter,
+                enterActive: styles.taskEnterActive,
+                exit: styles.taskExit,
+                exitActive: styles.taskExitActive,
+              }}
+            >
+              <Task task={task} onComplete={onComplete} onDelete={onDelete} onEdit={onEdit} />
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
       </section>
     )
 }

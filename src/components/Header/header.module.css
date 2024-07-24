@@ -3,7 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 200px;
+  height: 20vh;
+  width: 100vw;
   position: relative;
 }
 
@@ -26,7 +27,7 @@
   border: 1px solid #0d0d0d;
   border-radius: 8px;
   padding: 0 16px;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .newTaskInput {
@@ -51,7 +52,7 @@
   align-items: center;
   gap: 6px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .inputDate{
@@ -61,4 +62,33 @@
 
 .inputTitle{
   flex: 3;
+}
+
+@media (max-width: 480px) {
+  .cabecalho {
+    flex-direction: column;
+  }
+
+  .newTaskForm {
+    display: block;
+    position: relative;
+  }  
+
+  .newTaskInput {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.5rem;
+  }
+
+  .newTaskForm input {
+    padding: 0.5rem;
+  }
+
+  .newTaskForm button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 0.5rem !important;
+  }
 }

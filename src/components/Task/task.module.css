@@ -82,3 +82,9 @@ p.textCompleted {
   display: flex;
   gap: 1rem;
 }
+
+@media (max-width: 480px) {
+  .task{
+    width: 91vw;
+  }
+}

@@ -44,7 +44,7 @@ export function Task ({ task, onComplete, onDelete, onEdit }) {
             </div>  
 
             <div className={styles.buttons}>
-                <button className={styles.editButton} onClick={handleEdit}>
+                <button className={styles.editButton} onClick={handleEdit} disabled={task.isCompleted}>
                     <AiOutlineEdit size={22} />
                 </button>
                 <button className={styles.deleteButton} onClick={handleDelete}>
