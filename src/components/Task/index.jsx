@@ -17,14 +17,15 @@ export function Task ({ task, onComplete, onDelete, onEdit }) {
 
     function formatDate(dateString) {
         const date = new Date(dateString);
-        const day = String(date.getDate() + 1).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Janeiro é 0!
+        date.setDate(date.getDate() + 1);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
     }
 
     const today = new Date() .toISOString().split('T')[0];
-    const isLate = task.conclusionDate < today;
+    const isLate = task.dueDate < today;
 
     return (
         <div className={styles.task}>
@@ -38,7 +39,7 @@ export function Task ({ task, onComplete, onDelete, onEdit }) {
                         {task.title}
                     </p>
                     <p className={`${task.isCompleted ? styles.textCompleted : ""} ${isLate ? styles.lateDate : ""}`}>
-                        <FaRegCalendar /> {formatDate(task.conclusionDate)}
+                        <FaRegCalendar /> {formatDate(task.dueDate)}
                     </p>
                 </div>
             </div>  

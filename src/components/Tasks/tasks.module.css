@@ -1,8 +1,7 @@
 .tasks {
   width: 100%;
   max-width: 736px;
-  margin: 0 auto;
-  margin-top: 90px;
+  margin: 90px auto 0;
   padding: 0 1rem;
 }
 
@@ -79,7 +78,7 @@
 
   .tasks {
     width: 100vw;
-    margin: initial;
     margin-top: 90px;
+    padding-bottom: 2.5rem;
   }
 }

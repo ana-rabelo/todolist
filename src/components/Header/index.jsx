@@ -12,7 +12,7 @@ export function Header({ onAddTask, taskToEdit }){
     useEffect(() => {
         if (taskToEdit) {
             setTitle(taskToEdit.title);
-            setConclusionDate(taskToEdit.conclusionDate);
+            setConclusionDate(taskToEdit.dueDate);
             setId(taskToEdit.id);
         } else {
             setTitle('');
@@ -37,7 +37,7 @@ export function Header({ onAddTask, taskToEdit }){
     function onChangeDate(event) {
         setConclusionDate(event.target.value)
     }
-    
+
     return (
         <header className={styles.cabecalho}>
             <img src={todoLogo} alt="todolist logo" />
@@ -49,6 +49,7 @@ export function Header({ onAddTask, taskToEdit }){
                         placeholder="Adicionar nova tarefa" 
                         type="text" 
                         value={title}
+                        maxLength={70}
                         onChange={onChangeTitle} 
                         required/>
                     <input 

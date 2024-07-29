@@ -11,7 +11,15 @@ function App() {
   const [taskToEdit, setTaskToEdit] = useState(null);
 
   function sortTasks(tasks) {
-    tasks.sort((a, b) => a.isCompleted - b.isCompleted);
+    tasks.sort((a, b) => {
+      if (a.isCompleted !== b.isCompleted) {
+        return a.isCompleted - b.isCompleted;
+      } else {
+        const dateA = new Date(a.dueDate);
+        const dateB = new Date(b.dueDate);
+        return dateA - dateB;
+      }
+    });
   }
 
   function loadSavedTasks(){
@@ -39,12 +47,12 @@ function App() {
           id: Math.floor(Math.random() * 10000) + 1,
           title: taskTitle,
           isCompleted: false,
-          conclusionDate: taskDate
+          dueDate: taskDate
         }
       ]);}
     else {
       const updatedTasks = tasks.map(task => 
-        task.id === taskId ? { ...task, title: taskTitle, conclusionDate: taskDate } : task
+        task.id === taskId ? { ...task, title: taskTitle, dueDate: taskDate } : task
       );
       setTasksAndSave(updatedTasks);
       setTaskToEdit(null);

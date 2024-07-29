@@ -22,12 +22,16 @@ body {
   background-size: cover;
   color: var(--cor-texto);
   min-width: 100vw;
-  min-height: 100vh;
   font-family: "Inter", sans-serif;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh;
 }
 
 button {
   cursor: pointer;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
